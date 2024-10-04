@@ -1,95 +1,139 @@
-import Image from "next/image";
-import styles from "./page.module.css";
+'use client'
+// import React, { useState } from 'react';
+// import './style.css';
+// import { authentication } from './firebase';
 
-export default function Home() {
+// const Page = () => {
+//   const [formData, setFormData] = useState({
+//     regName: '',
+//     regEmail: '',
+//     regPass: '',
+//     loginEmail: '',
+//     loginPass: ''
+//   });
+
+//   const handleInputChange = (e) => {
+//     const { name, value } = e.target;
+//     setFormData((prevData) => ({
+//       ...prevData,
+//       [name]: value,
+//     }));
+//   };
+
+//   const register = async () => {
+//     const { regName, regEmail, regPass } = formData;
+//     if (regName === '' || regEmail === '' || regPass === '') {
+//       alert('All fields are required');
+//     } else {
+//       try {
+//         await authentication.createUserWithEmailAndPassword(regEmail, regPass);
+//         alert('User registered successfully');
+//         setFormData({ ...formData, regName: '', regEmail: '', regPass: '' });
+//       } catch (error) {
+//         alert(error.message);
+//       }
+//     }
+//   };
+
+//   const login = async () => {
+//     const { loginEmail, loginPass } = formData;
+//     if (loginEmail === '' || loginPass === '') {
+//       alert('All fields are required');
+//     } else {
+//       try {
+//         await authentication.signInWithEmailAndPassword(loginEmail, loginPass);
+//         alert('User logged in successfully');
+//         setFormData({ ...formData, loginEmail: '', loginPass: '' });
+//       } catch (error) {
+//         alert(error.message);
+//       }
+//     }
+//   };
+
+//   return (
+//     <div className='main_container'>
+//       <div className='form_container register_container'>
+//         <h3>Register</h3>
+//         <div className='input_box'>
+//           <input
+//             type='text'
+//             placeholder='User name'
+//             name='regName'
+//             value={formData.regName}
+//             onChange={handleInputChange}
+//           />
+//         </div>
+//         <div className='input_box'>
+//           <input
+//             type='email'
+//             placeholder='Email'
+//             name='regEmail'
+//             value={formData.regEmail}
+//             onChange={handleInputChange}
+//           />
+//         </div>
+//         <div className='input_box'>
+//           <input
+//             type='password'
+//             placeholder='Create Password'
+//             name='regPass'
+//             value={formData.regPass}
+//             onChange={handleInputChange}
+//           />
+//         </div>
+//         <div className='button'>
+//           <button onClick={register}>Register</button>
+//         </div>
+//       </div>
+
+//       <div className='form_container login_container'>
+//         <h3>Login</h3>
+//         <div className='input_box'>
+//           <input
+//             type='email'
+//             placeholder='Type your email'
+//             name='loginEmail'
+//             value={formData.loginEmail}
+//             onChange={handleInputChange}
+//           />
+//         </div>
+//         <div className='input_box'>
+//           <input
+//             type='password'
+//             placeholder='Enter password'
+//             name='loginPass'
+//             value={formData.loginPass}
+//             onChange={handleInputChange}
+//           />
+//         </div>
+//         <div className='button'>
+//           <button onClick={login}>Login</button>
+//         </div>
+//       </div>
+//     </div>
+//   );
+// };
+
+// export default Page;
+import React from 'react';
+import { BrowserRouter as Router, Route, Routes } from 'react-router-dom';
+
+import Login from '@/component/Login';
+import Register from '@/component/Register';
+
+import Home from './Home';
+
+const App = () => {
   return (
-    <div className={styles.page}>
-      <main className={styles.main}>
-        <Image
-          className={styles.logo}
-          src="https://nextjs.org/icons/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol>
-          <li>
-            Get started by editing <code>src/app/page.js</code>.
-          </li>
-          <li>Save and see your changes instantly.</li>
-        </ol>
-
-        <div className={styles.ctas}>
-          <a
-            className={styles.primary}
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className={styles.logo}
-              src="https://nextjs.org/icons/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-            className={styles.secondary}
-          >
-            Read our docs
-          </a>
-        </div>
-      </main>
-      <footer className={styles.footer}>
-        <a
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="https://nextjs.org/icons/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
-      </footer>
-    </div>
+    <Router>
+      <Routes>
+        <Route path="/" element={<Login />} />
+        <Route path="/register" element={<Register />} />
+        <Route path="/home" element={<Home />} />
+      </Routes>
+    </Router>
   );
-}
+};
+
+export default App;
+
